@@ -4,7 +4,8 @@ The Operator Courier is used to build, validate and push Operator Artifacts.
 
 ## Building and running the tool locally with pip
 ```bash
-$ pip install --user .
+# The `-e` option will reflect code changes in `operator-courier` calls without a rebuild
+$ pip install --user  -e .
 
 $ operator-courier
 ```
