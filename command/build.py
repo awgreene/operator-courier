@@ -1,12 +1,14 @@
 import yaml
+import command.identify as id
 
 class BuildCmd():
     name = 'build'
+    #TODO: Add const
     operatorArtifactsTemplate = dict(
-        data = dict( 
+        data = dict(
             customResourceDefinitions = [],
             clusterServiceVersions = [],
-            packages = [], 
+            packages = [],
         )
     )
 
@@ -17,11 +19,15 @@ class BuildCmd():
         pass
 
     def updateArtifact(self, operatorArtifact, field, item):
-        operatorArtifact["data"][field].append(item)
+        operatorArtifact["data"][field].append(yaml.load(item))
         return operatorArtifact
+
+
 
     def build(self, strings):
         operatorArtifacts = self.operatorArtifactsTemplate
         for item in strings:
-            operatorArtifacts = self.updateArtifact(operatorArtifacts, "customResourceDefinitions", yaml.load(item))
+            operatorArtifacts = self.updateArtifact(operatorArtifacts, id.getOperatorArtifactType(item), item)
+        
+        # TEST:
         print yaml.dump(operatorArtifacts)
