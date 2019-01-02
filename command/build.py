@@ -29,5 +29,4 @@ class BuildCmd():
         for item in strings:
             operatorArtifacts = self.updateArtifact(operatorArtifacts, id.getOperatorArtifactType(item), item)
         
-        # TEST:
-        print yaml.dump(operatorArtifacts)
+        print(yaml.dump(operatorArtifacts))

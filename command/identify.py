@@ -2,7 +2,7 @@ import yaml
 
 def getOperatorArtifactType(operatorArtifactString):
     operatorArtifact = yaml.load(operatorArtifactString)
-    if operatorArtifact.has_key("packageName"):
+    if "packageName" in operatorArtifact:
         return "packages"
     elif operatorArtifact["kind"] == "ClusterServiceVersion": 
         return "clusterServiceVersions"
