@@ -2,12 +2,12 @@ import yaml
 
 def getOperatorArtifactType(operatorArtifactString):
     operatorArtifact = yaml.load(operatorArtifactString)
-    if "packageName" in operatorArtifact:
-        return "packages"
-    elif operatorArtifact["kind"] == "ClusterServiceVersion": 
-        return "clusterServiceVersions"
-    elif operatorArtifact["kind"] == "CustomResourceDefinition":
-        return "customResourceDefinitions"
-    else:
-        # TODO: Throw Error
-        pass
+    if type(operatorArtifact) is dict:
+        if "packageName" in operatorArtifact:
+            return "packages"
+        elif "kind" in operatorArtifact:
+            if operatorArtifact["kind"] == "ClusterServiceVersion": 
+                return "clusterServiceVersions"
+            elif operatorArtifact["kind"] == "CustomResourceDefinition":
+                return "customResourceDefinitions"
+    return "invalid"

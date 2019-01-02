@@ -21,3 +21,9 @@ class TestGetOperatorArtifactType(TestCase):
     def test_id_package(self):
         self.id_test("command/tests/test_files/marketplace.package.yaml", "packages")
 
+    def test_id_invalid(self):
+        self.id_test("command/tests/test_files/invalid.yaml", "invalid")
+    
+    def test_id_empty(self):
+        self.id_test("command/tests/test_files/empty.yaml", "invalid")
+
