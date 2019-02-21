@@ -5,7 +5,7 @@ This module implements the api that should be imported when using the operator-c
 """
 
 import os
-import logging
+import logging.config
 from tempfile import TemporaryDirectory
 import yaml
 from operatorcourier.build import BuildCmd
@@ -13,8 +13,10 @@ from operatorcourier.validate import ValidateCmd
 from operatorcourier.push import PushCmd
 from operatorcourier.format import format_bundle
 
-logging.basicConfig()
-logger = logging.getLogger(__name__)
+logging.config.fileConfig("./config/log-config.yaml")
+logger = logging.getLogger()
+
+
 
 def build_and_verify(source_dir=None, yamls=None):
     """Build and verify constructs an operator bundle from a set of files and then verifies it for usefulness and accuracy.

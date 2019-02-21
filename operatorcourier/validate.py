@@ -1,7 +1,8 @@
 import logging
+
 import json
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger()
 
 class ValidateCmd():
     dataKey = "data"
