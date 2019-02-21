@@ -13,7 +13,7 @@ from operatorcourier.validate import ValidateCmd
 from operatorcourier.push import PushCmd
 from operatorcourier.format import format_bundle
 
-logging.config.fileConfig("./config/log-config.yaml")
+logging.config.fileConfig("./config/logging.ini")
 logger = logging.getLogger()
 
 
